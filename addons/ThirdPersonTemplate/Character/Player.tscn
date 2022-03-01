@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://daqa8rmn7x6im"]
+
+[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/CharacterController.gd" id="1_v0k2e"]
+[ext_resource type="PackedScene" uid="uid://db3sn1k63f61a" path="res://addons/ThirdPersonTemplate/Character/Nodes/Armature.gltf" id="1_x7q6h"]
+[ext_resource type="PackedScene" uid="uid://b0toro5ftgm3q" path="res://addons/ThirdPersonTemplate/Character/Nodes/CollisionShape3D.res" id="5_px1hd"]
+[ext_resource type="PackedScene" path="res://addons/ThirdPersonTemplate/Character/Nodes/InterPolatedCamera.tscn" id="6_6dmq1"]
+[ext_resource type="PackedScene" uid="uid://dw6keum2ewunp" path="res://addons/ThirdPersonTemplate/Character/Nodes/LocomationRotate.res" id="6_eu852"]
+[ext_resource type="PackedScene" uid="uid://bk4h51vqu3uxn" path="res://addons/ThirdPersonTemplate/Character/Nodes/LocomationStrafe.res" id="7_02mx8"]
+[ext_resource type="PackedScene" uid="uid://dkoxxh3p7lbbd" path="res://addons/ThirdPersonTemplate/Character/Nodes/Pivot.res" id="7_mxocs"]
+
+[sub_resource type="Animation" id="Animation_ub214"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature2/Skeleton3D:RootMotion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -2.86482, 108.268, 0.967534)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_er1po"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_72cyl"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource( "1_v0k2e" )
+
+[node name="Armature" parent="." instance=ExtResource( "1_x7q6h" )]
+transform = Transform3D(0.020126, 0, 0, 0, 0.020126, 0, 0, 0, 0.020126, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature/Armature2" index="0"]
+bones/0/position = Vector3(-2.86482, 108.268, 0.967534)
+bones/1/position = Vector3(0.000285631, -14.0351, -0.999227)
+bones/1/rotation = Quaternion(0.001751, -0.795743, 0.0442301, 0.604015)
+bones/2/rotation = Quaternion(-0.0614434, 0.000962226, 0.0638861, 0.996064)
+bones/3/rotation = Quaternion(-0.0168629, -0.0104294, -0.0216156, 0.99957)
+bones/4/rotation = Quaternion(-0.0170355, -0.00919181, -0.0216107, 0.999579)
+bones/5/rotation = Quaternion(0.0294953, 0.00609402, -0.0676647, 0.997253)
+bones/6/rotation = Quaternion(0.00870084, 0.0227739, 0.104471, 0.994229)
+bones/8/rotation = Quaternion(0.0476092, 0.550885, -0.832837, 0.0253304)
+bones/9/rotation = Quaternion(0.11382, 0.90168, 0.409817, 0.0779002)
+bones/10/rotation = Quaternion(0.185002, 0.962789, -0.0768186, 0.181411)
+bones/12/rotation = Quaternion(0.824542, 0.0133409, -0.0285246, 0.564924)
+bones/13/rotation = Quaternion(0.452815, 0.0135342, 0.0427672, 0.890475)
+bones/14/rotation = Quaternion(0.0888849, 0.188111, -0.221759, 0.952647)
+bones/16/rotation = Quaternion(-0.013058, -0.105657, -0.99023, 0.0900556)
+bones/17/rotation = Quaternion(-0.0172707, -0.0727178, -0.244661, 0.966724)
+bones/18/rotation = Quaternion(0.286521, -0.681302, 0.445053, 0.505629)
+bones/19/rotation = Quaternion(0.35762, -0.0714669, 0.0166761, 0.930979)
+bones/21/rotation = Quaternion(0.0685733, -0.0781704, -0.986127, 0.129383)
+bones/22/rotation = Quaternion(0.0253641, -0.0611359, -0.295147, 0.953156)
+bones/23/rotation = Quaternion(0.345588, -0.61485, 0.427054, 0.565821)
+bones/24/rotation = Quaternion(0.352771, 0.0581364, -0.0215277, 0.933654)
+
+[node name="AnimationPlayer" parent="Armature" index="1"]
+anims/RESET = SubResource( "Animation_ub214" )
+
+[node name="CollisionShape3D" parent="." instance=ExtResource( "5_px1hd" )]
+
+[node name="LocomationRotate" parent="." instance=ExtResource( "6_eu852" )]
+parameters/playback = SubResource( "AnimationNodeStateMachinePlayback_er1po" )
+
+[node name="LocomationStrafe" parent="." instance=ExtResource( "7_02mx8" )]
+parameters/playback = SubResource( "AnimationNodeStateMachinePlayback_72cyl" )
+
+[node name="InterPolatedCamera" parent="." instance=ExtResource( "6_6dmq1" )]
+target = NodePath("")
+
+[node name="Pivot" parent="." instance=ExtResource( "7_mxocs" )]
+
+[editable path="Armature"]

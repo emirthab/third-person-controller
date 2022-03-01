@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=3 uid="uid://nidgpkfyg1b4"]
+
+[ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="2_vp21c"]
+[ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://addons/ThirdPersonTemplate/Environments/Materials/BlueGrid.material" id="3_anjpt"]
+[ext_resource type="Material" uid="uid://c1u020xb37y6n" path="res://addons/ThirdPersonTemplate/Environments/Materials/Blue.material" id="3_ugxud"]
+[ext_resource type="Material" uid="uid://d3up41bo0vjj0" path="res://addons/ThirdPersonTemplate/Environments/Materials/OrangeGrid.material" id="4_kii6k"]
+[ext_resource type="Material" uid="uid://ddpgp1pyklffr" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreenGrid.material" id="6_5rtke"]
+[ext_resource type="Material" uid="uid://bquocw2a8n271" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreyGrid.material" id="6_7xeo2"]
+[ext_resource type="Material" uid="uid://cpk3jtowelhgh" path="res://addons/ThirdPersonTemplate/Environments/Materials/PingkGrid.material" id="7_xstjq"]
+[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/CharacterController.gd" id="8_q7sxw"]
+
+[sub_resource type="Environment" id="Environment_qyvd4"]
+background_mode = 2
+background_color = Color(0.647059, 0.909804, 0.917647, 1)
+sky = ExtResource( "2_vp21c" )
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_read_sky_light = true
+adjustment_enabled = true
+adjustment_saturation = 1.15
+
+[node name="Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0815773, -1.43051e-06, 0.163605)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.892271, -0.274443, 0.358516, 2.02684e-08, 0.794054, 0.607847, -0.451501, 0.542364, -0.708511, 0, 2.76815, 9.26053)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_qyvd4" )
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="FloorAlt" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14287, 0)
+size = Vector3(48.5, 0.1, 48.5)
+material = ExtResource( "3_ugxud" )
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14482, 0)
+use_collision = true
+size = Vector3(47.5872, 0.1, 47.791)
+material = ExtResource( "3_anjpt" )
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(0.833182, 0, 0.552999, 0, 1, 0, -0.552999, 0, 0.833182, 16.5416, 3.19482, -15.014)
+use_collision = true
+size = Vector3(4, 6, 8)
+material = ExtResource( "4_kii6k" )
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-0.318513, 0, 0.947919, 0, 1, 0, -0.947919, 0, -0.318513, 0.541599, 13.1948, 3.986)
+use_collision = true
+size = Vector3(4, 6, 8)
+material = ExtResource( "4_kii6k" )
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.19482, -6.9983)
+use_collision = true
+size = Vector3(6, 8, 6)
+material = ExtResource( "6_5rtke" )
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.19482, -6.9983)
+use_collision = true
+size = Vector3(4, 4, 6)
+material = ExtResource( "6_5rtke" )
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.19482, -10.9983)
+use_collision = true
+size = Vector3(4, 2, 2)
+material = ExtResource( "6_5rtke" )
+
+[node name="Node3D" type="Node3D" parent="Level"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17.521, 4.76836e-07, -18.7606)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233154, 0.69482, -0.0343475)
+use_collision = true
+size = Vector3(8, 1, 1)
+material = ExtResource( "7_xstjq" )
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76685, 1.69482, -0.0343475)
+use_collision = true
+size = Vector3(4, 1, 1)
+material = ExtResource( "7_xstjq" )
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76685, 2.69482, -0.0343475)
+use_collision = true
+size = Vector3(1, 1, 1)
+material = ExtResource( "7_xstjq" )
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.19482, 4)
+use_collision = true
+size = Vector3(24, 10, 16)
+material = ExtResource( "6_7xeo2" )
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3, -7)
+operation = 2
+size = Vector3(4, 6, 2)
+material = ExtResource( "6_7xeo2" )
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level/CSGBox3D"]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 11, -3, 0)
+operation = 2
+size = Vector3(12, 6, 2)
+material = ExtResource( "6_7xeo2" )
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+operation = 2
+size = Vector3(22, 10, 14)
+material = ExtResource( "6_7xeo2" )
+
+[node name="ThirdPersonController" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249748, -19.2934)
+script = ExtResource( "8_q7sxw" )
+LocomationType = 1
+Gravity = 25.0
+JumpForce = 10.0
+PivotPath = NodePath("Pivot")

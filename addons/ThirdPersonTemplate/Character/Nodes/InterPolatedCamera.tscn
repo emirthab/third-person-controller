@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/InterPolatedCamera.gd" id="1_sfyfx"]
+
+[node name="InterPolatedCamera" type="Camera3D"]
+current = true
+script = ExtResource( "1_sfyfx" )
+target = NodePath("../Pivot/Camera3D")
