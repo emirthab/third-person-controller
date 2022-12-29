@@ -6,7 +6,7 @@ extends AnimationTree
 
 func _process(delta):
 	if active:
-		var directionalSpeedMagnitude : float = sqrt( pow(Player.motion_velocity.x, 2) + pow(Player.motion_velocity.z, 2) )
+		var directionalSpeedMagnitude : float = sqrt( pow(Player.velocity.x, 2) + pow(Player.velocity.z, 2) )
 		var movementState : Vector2 = directionalSpeedMagnitude * Player.inputDir / Player.SpeedUp
 		var state = getMovementState()
 		var x = lerp(state.x, movementState.x, 10 * delta)
@@ -22,7 +22,7 @@ func _process(delta):
 				StateMachine.travel("JumpingDown")
 			if Player.direction:
 				setJumping(false)
-		elif (Player.motion_velocity.y < Player.JumpForce):
+		elif (Player.velocity.y < Player.JumpForce):
 			setJumping(true)
 			StateMachine.travel("FallingIdle")
 

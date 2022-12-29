@@ -7,5 +7,5 @@ func _input(event):
 		var resultant = sqrt((event.relative.x * event.relative.x ) + (event.relative.y * event.relative.y ))
 		var rot = Vector3(event.relative.y,-event.relative.x,0).normalized()
 		rotate_object_local(rot , resultant * Player.MouseSensitivity)
-		rotation.z = clamp(rotation.z,deg2rad(-0),deg2rad(0))
-		rotation.x = clamp(rotation.x,deg2rad(-30),deg2rad(30))
+		rotation.z = clamp(rotation.z,deg_to_rad(-0),deg_to_rad(0))
+		rotation.x = clamp(rotation.x,deg_to_rad(-30),deg_to_rad(30))

@@ -46,21 +46,21 @@ func _ready():
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
 		if not is_on_floor():
-			motion_velocity.y -= Gravity * delta
+			velocity.y -= Gravity * delta
 
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			motion_velocity.y =	JumpForce
+			velocity.y = JumpForce
 
 		inputDir = Input.get_vector("ui_left", "ui_right", "ui_up",	"ui_down")
 		direction =	-( (Pivot.transform.basis *	global_transform.basis)	* Vector3(inputDir.x, 0, inputDir.y)).normalized()
 		SPEED =	SpeedUp	if Input.is_key_pressed(KEY_SHIFT) else	DefaultSpeed
 
 		if direction:
-			motion_velocity.x =	lerp(motion_velocity.x,	direction.x	* SPEED, AccelerationFactor	* delta)
-			motion_velocity.z =	lerp(motion_velocity.z,	direction.z	* SPEED, AccelerationFactor	* delta)
+			velocity.x = lerpf(velocity.x, direction.x * SPEED, AccelerationFactor * delta)
+			velocity.z = lerpf(velocity.z, direction.z * SPEED, AccelerationFactor * delta)
 		else:
-			motion_velocity.x =	lerp(motion_velocity.x,	0, DecelerationFactor *	delta)
-			motion_velocity.z =	lerp(motion_velocity.z,	0, DecelerationFactor *	delta)
+			velocity.x = lerpf(velocity.x, 0, DecelerationFactor * delta)
+			velocity.z = lerpf(velocity.z, 0, DecelerationFactor * delta)
 		
 		move_and_slide()
 
