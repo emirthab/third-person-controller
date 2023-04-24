@@ -1,8 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dykas0cto2h4f"]
 
-[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/InterPolatedCamera.gd" id="1_sfyfx"]
+[ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="1_7y4ou"]
 
 [node name="InterPolatedCamera" type="Camera3D"]
 current = true
-script = ExtResource( "1_sfyfx" )
-target = NodePath("../Pivot/Camera3D")
+script = ExtResource("1_7y4ou")

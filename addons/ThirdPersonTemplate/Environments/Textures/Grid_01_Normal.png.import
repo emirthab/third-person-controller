@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Grid_01_Normal.png-f023fcd12b1c4ad632ffb35953
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true

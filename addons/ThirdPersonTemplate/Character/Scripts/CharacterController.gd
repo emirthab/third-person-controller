@@ -18,7 +18,7 @@ var	inputDir : Vector2
 var	direction :	Vector3
 
 func _enter_tree():
-	var armature = preload("res://addons/ThirdPersonTemplate/Character/Nodes/Armature.gltf").instantiate()
+	var armature = preload("res://addons/ThirdPersonTemplate/Character/mannequiny/mannequiny-0.3.0.glb").instantiate()
 	var collider = preload("res://addons/ThirdPersonTemplate/Character/Nodes/CollisionShape3D.res")
 	var locoStrafe = preload("res://addons/ThirdPersonTemplate/Character/Nodes/LocomationStrafe.res")
 	var locoRot = preload("res://addons/ThirdPersonTemplate/Character/Nodes/LocomationRotate.res")
