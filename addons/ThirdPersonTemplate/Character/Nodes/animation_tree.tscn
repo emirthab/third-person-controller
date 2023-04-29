@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ioduk4oqbukj"]
+[gd_scene load_steps=18 format=3 uid="uid://ioduk4oqbukj"]
 
 [sub_resource type="AnimationNodeAnimation" id="14"]
 animation = &"idle"
@@ -10,19 +10,25 @@ animation = &"air_jump"
 animation = &"air_land"
 
 [sub_resource type="AnimationNodeAnimation" id="17"]
-animation = &"walk"
+animation = &"idle"
 
 [sub_resource type="AnimationNodeAnimation" id="18"]
 animation = &"run"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_npd1x"]
+animation = &"run"
+
 [sub_resource type="AnimationNodeBlendSpace1D" id="19"]
 blend_point_0/node = SubResource("17")
-blend_point_0/pos = 0.533333
+blend_point_0/pos = 0.6
 blend_point_1/node = SubResource("18")
-blend_point_1/pos = 0.595652
+blend_point_1/pos = 0.6
+blend_point_2/node = SubResource("AnimationNodeAnimation_npd1x")
+blend_point_2/pos = 0.8
 min_space = 0.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="20"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="21"]
 xfade_time = 0.05
@@ -31,12 +37,17 @@ advance_condition = &"is_moving"
 [sub_resource type="AnimationNodeStateMachineTransition" id="22"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="23"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="24"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="25"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="26"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_io5wh"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="27"]
 states/idle/node = SubResource("14")
@@ -46,15 +57,14 @@ states/jump/position = Vector2(660, 252)
 states/land/node = SubResource("16")
 states/land/position = Vector2(448, 215)
 states/move_ground/node = SubResource("19")
-states/move_ground/position = Vector2(660, 104)
-transitions = ["idle", "jump", SubResource("20"), "land", "idle", SubResource("21"), "jump", "land", SubResource("22"), "idle", "move_ground", SubResource("23"), "move_ground", "idle", SubResource("24"), "move_ground", "jump", SubResource("25"), "jump", "move_ground", SubResource("26")]
-graph_offset = Vector2(135.891, 7)
+states/move_ground/position = Vector2(660, 100)
+transitions = ["idle", "jump", SubResource("20"), "land", "idle", SubResource("21"), "jump", "land", SubResource("22"), "idle", "move_ground", SubResource("23"), "move_ground", "idle", SubResource("24"), "move_ground", "jump", SubResource("25"), "jump", "move_ground", SubResource("26"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_io5wh")]
+graph_offset = Vector2(123.891, 72)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_t3h8r"]
 
 [node name="AnimationTree" type="AnimationTree"]
 tree_root = SubResource("27")
-anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_t3h8r")
 parameters/conditions/is_moving = false
 parameters/move_ground/blend_position = 0.0
