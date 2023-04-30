@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcyqaw6kwj58q"]
 
-[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/CameraTemplate.gd" id="1_is482"]
+[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/CameraTemplate.gd" id="1_h46st"]
 
 [node name="Camroot" type="Node3D"]
-script = ExtResource("1_is482")
+script = ExtResource("1_h46st")
 
 [node name="h" type="Node3D" parent="."]
 

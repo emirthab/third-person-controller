@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://okhk605veoa7"
-path="res://.godot/imported/mannequiny-0.3.0.glb-4456b55ae73e9b718304b9862518f661.scn"
+uid="uid://4nrcuyqjw3oy"
+path="res://.godot/imported/mannequiny-0.4.0.glb-86836091e698cdd81daa67e9a1cc79b5.scn"
 
 [deps]
 
-source_file="res://addons/ThirdPersonTemplate/Character/mannequiny/mannequiny-0.3.0.glb"
-dest_files=["res://.godot/imported/mannequiny-0.3.0.glb-4456b55ae73e9b718304b9862518f661.scn"]
+source_file="res://addons/ThirdPersonTemplate/Character/mannequiny/mannequiny-0.4.0.glb"
+dest_files=["res://.godot/imported/mannequiny-0.4.0.glb-86836091e698cdd81daa67e9a1cc79b5.scn"]
 
 [params]
 
@@ -20,11 +20,11 @@ nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=0
-meshes/lightmap_texel_size=0.1
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
 skins/use_named_skins=true
 animation/import=true
-animation/fps=15
+animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
