@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcyqaw6kwj58q"]
+
+[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/CameraTemplate.gd" id="1_h46st"]
+
+[node name="Camroot" type="Node3D"]
+script = ExtResource("1_h46st")
+
+[node name="h" type="Node3D" parent="."]
+
+[node name="v" type="SpringArm3D" parent="h"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+spring_length = -3.0
+
+[node name="Camera3D" type="Camera3D" parent="h/v"]
+transform = Transform3D(-1, 1.45794e-08, -8.61985e-08, 0, 0.985996, 0.166769, 8.74228e-08, 0.166769, -0.985996, 0, 0, 0)
+keep_aspect = 0
