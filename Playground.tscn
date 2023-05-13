@@ -116,4 +116,4 @@ size = Vector3(22, 10, 14)
 material = ExtResource("6_7xeo2")
 
 [node name="PlayerTemplate" parent="." instance=ExtResource("8_fimwp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89496, 0.172781, -20.3633)

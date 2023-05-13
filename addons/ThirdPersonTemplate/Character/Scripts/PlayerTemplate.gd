@@ -52,6 +52,12 @@ func _input(event): # All major mouse and button input events
 	
 	if event.is_action_pressed("aim"): # Aim button triggers a strafe walk and camera mechanic
 		direction = $Camroot/h.global_transform.basis.z
+	var just_pressed = event.is_pressed() and not event.is_echo()
+	if Input.is_key_pressed(KEY_ESCAPE)	and	just_pressed:
+		if Input.get_mouse_mode() == 0:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func sprint_and_roll():
 ## Dodge button input with dash and interruption to basic actions
@@ -140,11 +146,12 @@ func _physics_process(delta):
 		
 	# Movement input, state and mechanics. *Note: movement stops if attacking
 	if (Input.is_action_pressed("forward") ||  Input.is_action_pressed("backward") ||  Input.is_action_pressed("left") ||  Input.is_action_pressed("right")):
-		direction = Vector3(Input.get_action_strength("left") - Input.get_action_strength("right"),
-					0,
-					Input.get_action_strength("forward") - Input.get_action_strength("backward"))
-		direction = direction.rotated(Vector3.UP, h_rot).normalized()
-		is_walking = true
+		if Input.get_mouse_mode() != 0:
+			direction = Vector3(Input.get_action_strength("left") - Input.get_action_strength("right"),
+						0,
+						Input.get_action_strength("forward") - Input.get_action_strength("backward"))
+			direction = direction.rotated(Vector3.UP, h_rot).normalized()
+			is_walking = true
 		
 	# Sprint input, dash state and movement speed
 		if Input.is_action_pressed("sprint") and $DashTimer.is_stopped() and (is_walking == true ):
@@ -174,7 +181,8 @@ func _physics_process(delta):
 	velocity.x = horizontal_velocity.x + vertical_velocity.x
 	velocity.y = vertical_velocity.y
 	
-	move_and_slide()
+	if Input.get_mouse_mode() != 0:
+		move_and_slide()
 
 	# ========= State machine controls =========
 	# The booleans of the on_floor, is_walking etc, trigger the 
