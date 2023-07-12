@@ -21,7 +21,7 @@ project/assembly_name="Third Person Template"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/ThirdPersonTemplate/plugin.cfg")
 
 [input]
 
